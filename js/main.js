@@ -344,3 +344,37 @@ mailChimp();
         });
 
 })(jQuery);	
+
+
+
+
+ const preloader = document.getElementById("preloader");
+
+  // Show loader when page starts loading
+  window.addEventListener("beforeunload", () => {
+    preloader.style.display = "flex";
+    preloader.style.opacity = "1";
+  });
+
+  // Hide loader when page finishes loading
+  window.addEventListener("load", () => {
+    preloader.style.opacity = "0";
+    setTimeout(() => {
+      preloader.style.display = "none";
+    }, 500);
+  });
+
+  // Optional: Make sure every internal link triggers loader
+  document.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", e => {
+      if (
+        link.hostname === window.location.hostname && // same site
+        link.getAttribute("target") !== "_blank" &&  // not opening in new tab
+        link.getAttribute("href") &&
+        !link.getAttribute("href").startsWith("#")   // not just anchor scroll
+      ) {
+        preloader.style.display = "flex";
+        preloader.style.opacity = "1";
+      }
+    });
+  });

@@ -1,4 +1,54 @@
+/* Fullscreen overlay */
+#preloader {
+  position: fixed;
+  inset: 0;
+  background: #000; /* change to your brand color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* Your loader design */
+.loader {
+  width: 65px;
+  aspect-ratio: 1;
+  position: relative;
+}
+
+.loader:before,
+.loader:after {
+  content: "";
+  position: absolute;
+  border-radius: 50px;
+  box-shadow: 0 0 0 3px inset #fff; /* loader color */
+  animation: l5 2.5s infinite;
+}
+
+.loader:after {
+  animation-delay: -1.25s;
+  border-radius: 0;
+}
+
+@keyframes l5 {
+  0%    {inset:0    35px 35px 0}
+  12.5% {inset:0    35px 0    0}
+  25%   {inset:35px 35px 0    0}
+  37.5% {inset:35px 0    0    0}
+  50%   {inset:35px 0    0    35px}
+  62.5% {inset:0    0    0    35px}
+  75%   {inset:0    0    35px 35px}
+  87.5% {inset:0    0    35px 0}
+  100%  {inset:0    35px 35px 0}
+}
+
+
+
+
+
+
 /* Extra Small Mobile (320px - 479px) - Single Column Stacked */
+
 @media (max-width: 479px) {
     .instragram_area {
         display: grid;
